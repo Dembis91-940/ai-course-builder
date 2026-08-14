@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Course Builder — Créez vos formations IA en 10 minutes</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Segoe UI',system-ui,sans-serif;background:#070b14;color:#e8ecf5;overflow-x:hidden}
+  #bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+  .content{position:relative;z-index:1}
+  .hero{text-align:center;padding:6rem 1.5rem 3rem}
+  .badge{display:inline-block;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.3);color:#7dd3fc;border-radius:999px;padding:.35rem 1rem;font-size:.8rem;margin-bottom:1.2rem}
+  .hero h1{font-size:clamp(2rem,5.5vw,3.4rem);background:linear-gradient(120deg,#5eead4,#38bdf8,#818cf8);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.15}
+  .hero p{color:#9fb0c9;margin:1rem auto 0;max-width:620px}
+  .btn{display:inline-block;margin-top:1.6rem;padding:.85rem 1.8rem;border-radius:12px;background:linear-gradient(120deg,#0ea5e9,#6366f1);color:#fff;text-decoration:none;font-weight:700;font-size:1rem}
+  .btn:hover{box-shadow:0 0 30px rgba(99,102,241,.55)}
+  .tool{max-width:720px;margin:2.5rem auto;padding:2rem;background:rgba(15,21,38,.85);border:1px solid rgba(255,255,255,.1);border-radius:20px;backdrop-filter:blur(6px)}
+  .tool h2{text-align:center;color:#dbeafe;margin-bottom:1.2rem}
+  .tool label{display:block;font-size:.85rem;color:#9fb0c9;margin:.9rem 0 .3rem}
+  .tool input,.tool select,.tool textarea{width:100%;padding:.75rem;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:#0b1220;color:#e8ecf5;font-size:.95rem}
+  .tool button{width:100%;margin-top:1.3rem;padding:.95rem;border:0;border-radius:12px;background:linear-gradient(120deg,#0ea5e9,#6366f1);color:#fff;font-weight:700;font-size:1rem;cursor:pointer}
+  .tool button:hover{box-shadow:0 0 25px rgba(99,102,241,.5)}
+  .plan{white-space:pre-wrap;margin-top:1.4rem;padding:1.2rem;background:#0b1220;border:1px solid rgba(56,189,248,.25);border-radius:12px;font-size:.92rem;color:#c8d6ea;display:none;max-height:420px;overflow-y:auto}
+  .offers{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem;max-width:1000px;margin:2.5rem auto;padding:0 6vw}
+  .offer{background:rgba(15,21,38,.8);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:1.6rem;display:flex;flex-direction:column}
+  .offer.pop{border-color:rgba(56,189,248,.5);box-shadow:0 0 30px rgba(56,189,248,.15)}
+  .offer h3{color:#dbeafe;margin-bottom:.4rem}
+  .offer .desc{color:#9fb0c9;font-size:.9rem;flex:1}
+  .offer .prix{font-size:1.6rem;font-weight:800;color:#7dd3fc;margin-top:1rem}
+  .offer a{margin-top:1rem;text-align:center;padding:.7rem;border-radius:10px;background:linear-gradient(120deg,#0ea5e9,#6366f1);color:#fff;text-decoration:none;font-weight:600;font-size:.9rem}
+  .order{max-width:560px;margin:2rem auto 3rem;padding:2rem;background:rgba(15,21,38,.85);border:1px solid rgba(255,255,255,.1);border-radius:18px}
+  .order h2{text-align:center;color:#dbeafe;margin-bottom:.8rem}
+  .order p{color:#9fb0c9;font-size:.88rem;text-align:center;margin-bottom:1rem}
+  .order select,.order input{width:100%;padding:.7rem;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:#0b1220;color:#e8ecf5;margin-bottom:.7rem;font-size:.95rem}
+  .order button{width:100%;padding:.9rem;border:0;border-radius:12px;background:linear-gradient(120deg,#0ea5e9,#6366f1);color:#fff;font-weight:700;font-size:1rem;cursor:pointer}
+  .ok{text-align:center;color:#5eead4;margin-top:1rem;display:none;font-weight:600}
+  .footer{text-align:center;color:#5b6b85;padding:2rem;font-size:.85rem}
+  .footer a{color:#7dd3fc}
+</style>
+</head>
+<body>
+<canvas id="bg"></canvas>
+<div class="content">
+  <div class="hero">
+    <span class="badge">⚡ Outil gratuit — testez-le maintenant</span>
+    <h1>AI Course Builder<br>Créez vos formations en 10 minutes</h1>
+    <p>Entrez un sujet, choisissez votre public : le générateur produit un plan de formation professionnel complet (modules, leçons, exercices, checklist) — prêt à vendre.</p>
+    <a class="btn" href="#builder">🎯 Essayez l'outil gratuit</a>
+  </div>
+
+  <div class="tool" id="builder">
+    <h2>🧠 Générateur de plan de formation</h2>
+    <label>Sujet de votre formation</label>
+    <input id="sujet" placeholder="Ex : Utiliser ChatGPT pour votre business">
+    <label>Public cible</label>
+    <select id="public">
+      <option>Débutants complets</option>
+      <option>Professionnels (déjà actifs)</option>
+      <option>Entrepreneurs / solopreneurs</option>
+      <option>Équipes / entreprises</option>
+    </select>
+    <label>Durée visée</label>
+    <select id="duree">
+      <option>3 h (mini)</option>
+      <option>5 h (standard)</option>
+      <option>10 h (complète)</option>
+    </select>
+    <button onclick="generer()">⚡ Générer mon plan</button>
+    <div class="plan" id="plan"></div>
+  </div>
+
+  <div class="offers">
+    <div class="offer">
+      <h3>🆓 Outil gratuit</h3>
+      <div class="desc">Le générateur de plan de formation, illimité. Structurez autant de formations que vous voulez.</div>
+      <div class="prix">0 €</div>
+      <a href="#builder">Essayer →</a>
+    </div>
+    <div class="offer pop">
+      <h3>🔥 Formation rédigée sur mesure</h3>
+      <div class="desc">Un expert rédige votre formation COMPLÈTE en niveau expert (modules, leçons, exercices, checklist) à partir de votre plan. Livrée en PDF.</div>
+      <div class="prix">49 €</div>
+      <a href="#commander">Commander →</a>
+    </div>
+    <div class="offer">
+      <h3>📦 Studio (5 formations)</h3>
+      <div class="desc">5 formations rédigées sur mesure + vos plans illimités + priorité de livraison. Pour lancer votre catalogue.</div>
+      <div class="prix">197 €</div>
+      <a href="#commander">Commander →</a>
+    </div>
+  </div>
+
+  <div class="order" id="commander">
+    <h2>📦 Commander une formation rédigée</h2>
+    <p>Après votre commande, vous recevez une confirmation par email. Paiement simple (virement ou message privé) — le PDF vous est envoyé dès réception.</p>
+    <select id="f-offre">
+      <option>🔥 Formation rédigée sur mesure — 49 €</option>
+      <option>📦 Pack Studio (5 formations) — 197 €</option>
+    </select>
+    <input id="f-sujet" placeholder="Sujet de votre formation (obligatoire pour la rédaction)">
+    <input id="f-nom" placeholder="Votre nom">
+    <input id="f-email" type="email" placeholder="Votre email">
+    <button onclick="commander()">Commander →</button>
+    <div class="ok" id="ok">✅ Demande envoyée ! Confirmation par email très vite.</div>
+  </div>
+
+  <div class="footer">Un problème ? Contact : <a href="https://dembis91-940.github.io/agentia/">Agentia — l'IA au travail dans votre entreprise</a></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+// ==== Scène 3D (particules + parallaxe souris) ====
+(function(){
+  const c=document.getElementById('bg'),x=c.getContext('2d');let W,H,P=[];
+  function rs(){W=c.width=innerWidth;H=c.height=innerHeight;P=Array.from({length:Math.min(220,innerWidth/6)},()=>({x:Math.random()*W,y:Math.random()*H,z:Math.random()*60,r:Math.random()*1.8+.4}));}
+  addEventListener('resize',rs);rs();
+  let mx=0,my=0;addEventListener('mousemove',e=>{mx=(e.clientX/W-.5)*40;my=(e.clientY/H-.5)*40});
+  function loop(){
+    x.clearRect(0,0,W,H);
+    for(const p of P){
+      p.y-=p.z/400;if(p.y<-10){p.y=H+10;p.x=Math.random()*W}
+      const s=p.z/60,px=p.x+mx*s,py=p.y+my*s;
+      x.beginPath();x.arc(px,py,p.r*(1+s*.6),0,7);x.fillStyle=`rgba(94,234,212,${.12+p.z*.006})`;x.fill();
+    }
+    requestAnimationFrame(loop)
+  }
+  loop();
+})();
+// ==== Générateur de plan (moteur réel, déterministe) ====
+function generer(){
+  const sujet=document.getElementById('sujet').value.trim();
+  if(!sujet){alert('Entrez d\'abord un sujet.');return}
+  const pub=document.getElementById('public').value;
+  const dur=document.getElementById('duree').value;
+  const nb=dur==='3 h (mini)'?4:dur==='5 h (standard)'?6:8;
+  const S=sujet.charAt(0).toUpperCase()+sujet.slice(1);
+  const m=[
+    ['Fondamentaux',['Comprendre l\'essentiel de '+sujet+' sans jargon','Les 3 erreurs classiques des débutants','Le vocabulaire clé à connaître','Exercice : cartographie de vos besoins']],
+    ['Mise en pratique',['Votre premier cas concret pas à pas','Les bons réflexes pour progresser vite','Adapter '+sujet+' à votre situation ('+pub.toLowerCase()+')','Exercice : cas réel guidé']],
+    ['Techniques avancées',['Les méthodes utilisées par les experts','Automatiser et gagner du temps sur '+sujet,'Éviter les pièges et les idées reçues','Exercice : approfondissement']],
+    ['Passage à l\'action',['Votre plan d\'action sur 30 jours','Les indicateurs pour mesurer vos résultats','Les ressources recommandées','Checklist finale de maîtrise']],
+  ];
+  let plan='📚 PLAN DE FORMATION — '+S.toUpperCase()+'\n🎯 Public : '+pub+' | Durée : '+dur+'\n\n';
+  for(let i=0;i<nb;i++){
+    const mod=m[i%m.length];
+    plan+='Module '+(i+1)+' — '+mod[0]+'\n';
+    mod[1].forEach(l=>plan+='  • '+l+'\n');
+    plan+='\n';
+  }
+  plan+='✅ Exercice de clôture : produisez votre premier livrable réel avec '+sujet+'.\n✅ Checklist de fin : chaque point ci-dessus est maîtrisé.\n\n💡 Ce plan est gratuit. Pour la version RÉDIGÉE en expert (leçons complètes + exemples + exercices), commandez-la ci-dessous ↓';
+  const el=document.getElementById('plan');el.textContent=plan;el.style.display='block';
+  el.scrollIntoView({behavior:'smooth',block:'center'});
+}
+// ==== EmailJS ====
+emailjs.init("8Pui4ZEqxW2jRVF7h");
+function commander(){
+  const d={site:'AI Course Builder',name:document.getElementById('f-nom').value,email:document.getElementById('f-email').value,question:'Commande : '+document.getElementById('f-offre').value+' | Sujet : '+document.getElementById('f-sujet').value};
+  if(!d.name||!d.email||!document.getElementById('f-sujet').value){alert('Merci de remplir nom, email et sujet.');return}
+  emailjs.send("service_cy1ytdb","template_xpo58cv",d).then(()=>{document.getElementById('ok').style.display='block'}).catch(e=>alert('Erreur : '+e.text));
+}
+</script>
+</body>
+</html>

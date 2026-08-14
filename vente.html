@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commander — AI Course Builder | Formation rédigée par IA</title>
+<meta name="description" content="Commandez votre formation rédigée par IA : plan complet, leçons, exercices corrigés, page de vente. Livrée sous 48-72 h. Garantie 14 jours.">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Segoe UI', system-ui, sans-serif; background:#0a0812; color:#eceaf5; line-height:1.6; }
+  .wrap { max-width:1060px; margin:0 auto; padding:2rem 1.4rem 4rem; }
+
+  header { display:flex; justify-content:space-between; align-items:center; padding:1rem 0 2rem; }
+  .logo { font-weight:800; font-size:1.15rem; } .logo span { color:#a78bfa; }
+  header a { color:#b9aee0; text-decoration:none; font-size:.9rem; margin-left:1.2rem; } header a:hover { color:#c4b5fd; }
+
+  h1 { font-size:clamp(1.7rem, 4.5vw, 2.5rem); margin-bottom:.4rem; background:linear-gradient(120deg,#e9d5ff,#a78bfa); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .intro { color:#a99ec9; margin-bottom:2rem; max-width:760px; }
+
+  .pricing { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.4rem; margin-bottom:2.5rem; align-items:stretch; }
+  .plan { background:rgba(18,14,34,.8); border:1px solid rgba(255,255,255,.1); border-radius:20px; padding:1.8rem; display:flex; flex-direction:column; position:relative; }
+  .plan.featured { border-color:rgba(139,92,246,.6); box-shadow:0 0 50px rgba(139,92,246,.22); }
+  .plan .tag { position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:linear-gradient(120deg,#8b5cf6,#d946ef); color:#fff; font-size:.72rem; font-weight:700; padding:.3rem 1rem; border-radius:999px; letter-spacing:.06em; text-transform:uppercase; white-space:nowrap; }
+  .plan h2 { font-size:1.15rem; }
+  .plan .price { font-size:2.2rem; font-weight:800; margin:.6rem 0 .2rem; color:#e9d5ff; }
+  .plan .price small { font-size:.85rem; color:#8d82a8; font-weight:400; }
+  .plan ul { list-style:none; margin:1.1rem 0 1.5rem; flex:1; }
+  .plan li { padding:.38rem 0; color:#b3a8d4; font-size:.92rem; padding-left:1.6rem; position:relative; }
+  .plan li::before { content:"✓"; position:absolute; left:0; color:#a78bfa; font-weight:700; }
+  .plan .btn { text-align:center; }
+
+  .btn { padding:.85rem 1.8rem; border-radius:999px; font-weight:600; border:none; cursor:pointer; font-size:1rem; text-decoration:none; display:inline-block; transition:transform .15s, box-shadow .15s; }
+  .btn-primary { background:linear-gradient(120deg,#8b5cf6,#d946ef); color:#fff; box-shadow:0 0 24px rgba(139,92,246,.35); }
+  .btn-primary:hover { transform:translateY(-2px); box-shadow:0 0 36px rgba(139,92,246,.6); }
+  .btn-ghost { background:rgba(255,255,255,.06); color:#d9d2ee; border:1px solid rgba(255,255,255,.2); }
+  .btn-ghost:hover { background:rgba(255,255,255,.12); }
+
+  .steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1rem; margin:2rem 0; counter-reset:st; }
+  .step { background:rgba(18,14,34,.6); border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:1.2rem; position:relative; }
+  .step::before { counter-increment:st; content:counter(st); position:absolute; top:-12px; left:16px; width:26px; height:26px; border-radius:50%; background:linear-gradient(120deg,#8b5cf6,#d946ef); color:#fff; font-weight:700; display:flex; align-items:center; justify-content:center; font-size:.8rem; }
+  .step h3 { font-size:.95rem; margin:.4rem 0 .3rem; }
+  .step p { color:#a99ec9; font-size:.85rem; }
+
+  .order { background:rgba(18,14,34,.8); border:1px solid rgba(139,92,246,.45); border-radius:20px; padding:1.8rem; margin-top:1rem; }
+  .order h2 { color:#e9d5ff; font-size:1.2rem; margin-bottom:.5rem; }
+  .order .sub { color:#a99ec9; font-size:.92rem; margin-bottom:1.2rem; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  @media (max-width:700px){ .grid2{grid-template-columns:1fr;} }
+  .f label { display:block; font-size:.85rem; color:#c4b5fd; margin-bottom:.35rem; font-weight:600; }
+  .f input, .f select, .f textarea { width:100%; padding:.7rem .9rem; border-radius:10px; border:1px solid rgba(255,255,255,.15); background:#141021; color:#eceaf5; font-size:.95rem; outline:none; font-family:inherit; }
+  .f textarea { resize:vertical; min-height:80px; }
+  .note { font-size:.8rem; color:#8d82a8; margin-top:.8rem; }
+  .success { background:rgba(52,211,153,.12); border:1px solid rgba(52,211,153,.4); color:#6ee7b7; border-radius:12px; padding:1rem 1.2rem; margin-top:1rem; display:none; }
+  .success.visible { display:block; }
+
+  .guarantee { display:flex; gap:1rem; align-items:center; background:rgba(18,14,34,.6); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:1.3rem 1.5rem; margin-top:2rem; }
+  .guarantee .ico { font-size:2rem; }
+  .guarantee h3 { color:#e9d5ff; font-size:1rem; }
+  .guarantee p { color:#a99ec9; font-size:.88rem; }
+
+  .faq { margin-top:2.5rem; }
+  .faq h2 { color:#e9d5ff; font-size:1.2rem; margin-bottom:1rem; }
+  .faq details { background:rgba(18,14,34,.6); border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:1rem 1.3rem; margin-bottom:.7rem; }
+  .faq summary { cursor:pointer; font-weight:600; color:#e9d5ff; font-size:.95rem; }
+  .faq p { color:#a99ec9; font-size:.9rem; margin-top:.6rem; }
+
+  .footer { border-top:1px solid rgba(255,255,255,.08); margin-top:3rem; padding-top:1.5rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:.8rem; color:#6f648f; font-size:.85rem; }
+  .footer a { color:#a78bfa; text-decoration:none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">AI Course Builder<span>.</span></div>
+    <div><a href="index.html">Accueil</a> <a href="builder.html">L'outil gratuit</a></div>
+  </header>
+
+  <h1>Votre formation, rédigée par IA, livrée sous 48-72 h</h1>
+  <p class="intro">Vous avez un sujet, une cible… et pas le temps d'écrire. Nous rédigeons pour vous une formation complète et professionnelle : modules, leçons, exemples concrets, exercices corrigés, plus votre page de vente et votre email de lancement. Vous êtes propriétaire du contenu, vous le vendez comme vous voulez.</p>
+
+  <div class="pricing">
+    <div class="plan">
+      <h2>Outil gratuit</h2>
+      <div class="price">0 €<small> / illimité</small></div>
+      <ul>
+        <li>Générateur de plans complet</li>
+        <li>Exercices + checklist par formation</li>
+        <li>Templates de page de vente</li>
+        <li>Séquence email de 3 messages</li>
+      </ul>
+      <a class="btn btn-ghost" href="builder.html">Utiliser l'outil →</a>
+    </div>
+    <div class="plan featured">
+      <div class="tag">Le plus demandé</div>
+      <h2>Formation rédigée sur mesure</h2>
+      <div class="price">49-97 €<small> / formation</small></div>
+      <ul>
+        <li>Plan généré puis rédigé intégralement par IA</li>
+        <li>Modules, leçons, exemples et exercices corrigés</li>
+        <li>Page de vente prête à publier</li>
+        <li>Email de lancement inclus</li>
+        <li>Livraison sous 48-72 h ouvrées</li>
+        <li>Garantie 14 jours satisfait ou remboursé</li>
+      </ul>
+      <a class="btn btn-primary" href="#commander">Commander →</a>
+    </div>
+    <div class="plan">
+      <h2>Pack Studio</h2>
+      <div class="price">197 €<small> / 5 formations</small></div>
+      <ul>
+        <li>5 formations rédigées sur mesure</li>
+        <li>Templates de vente premium pour chacune</li>
+        <li>Priorité de livraison (2 semaines)</li>
+        <li>1 session d'ajustement offerte</li>
+        <li>Garantie 14 jours</li>
+      </ul>
+      <a class="btn btn-ghost" href="#commander">Commander →</a>
+    </div>
+  </div>
+
+  <h2 style="color:#e9d5ff;font-size:1.2rem;margin-bottom:1rem;">Comment ça se passe</h2>
+  <div class="steps">
+    <div class="step"><h3>Générez votre plan</h3><p>Gratuit, en 2 minutes, sur la page outil.</p></div>
+    <div class="step"><h3>Commandez</h3><p>Remplissez le formulaire ci-dessous avec votre plan.</p></div>
+    <div class="step"><h3>Recevez votre formation</h3><p>Livrée par email sous 48-72 h, prête à vendre.</p></div>
+    <div class="step"><h3>Vendez</h3><p>Page de vente + email de lancement inclus.</p></div>
+  </div>
+
+  <div class="order" id="commander">
+    <h2>🛒 Commander ma formation rédigée</h2>
+    <p class="sub">Nous vous confirmons le tarif exact (49-97 € selon la profondeur) et les modalités de paiement sous 24 h ouvrées. Paiement par virement ou message direct — Stripe arrive bientôt.</p>
+    <div class="grid2">
+      <div class="f"><label>Votre nom *</label><input type="text" id="o-nom" placeholder="Prénom Nom"></div>
+      <div class="f"><label>Votre email *</label><input type="email" id="o-email" placeholder="vous@exemple.fr"></div>
+      <div class="f"><label>Option choisie</label>
+        <select id="o-option">
+          <option value="Formation rédigée sur mesure (49-97 €)">Formation rédigée sur mesure (49-97 €)</option>
+          <option value="Pack Studio — 5 formations (197 €)">Pack Studio — 5 formations (197 €)</option>
+        </select>
+      </div>
+      <div class="f"><label>Sujet de la formation *</label><input type="text" id="o-sujet" placeholder="Ex. : ChatGPT pour les commerciaux"></div>
+      <div class="f"><label>Public cible *</label><input type="text" id="o-cible" placeholder="Ex. : professionnels de la vente"></div>
+      <div class="f"><label>Format souhaité</label>
+        <select id="o-format">
+          <option value="PDF">PDF</option>
+          <option value="E-learning (vidéos + quiz)">E-learning (vidéos + quiz)</option>
+          <option value="Atelier en présentiel">Atelier en présentiel</option>
+          <option value="Bootcamp intensif">Bootcamp intensif</option>
+        </select>
+      </div>
+      <div class="f" style="grid-column:1/-1;"><label>Précisions (optionnel)</label><textarea id="o-msg" placeholder="Points prioritaires, exemples à inclure, délai particulier…"></textarea></div>
+    </div>
+    <div style="margin-top:1.2rem;"><button class="btn btn-primary" id="o-submit">Envoyer ma commande ✉️</button></div>
+    <p class="note">🔒 Vos coordonnées ne servent qu'au traitement de votre commande. Garantie 14 jours satisfait ou remboursé.</p>
+    <div class="success" id="o-success"><strong>✅ Commande envoyée !</strong> Vous recevez une confirmation par email dans quelques minutes, puis notre réponse sous 24 h avec le tarif exact et les modalités de paiement.</div>
+  </div>
+
+  <div class="guarantee">
+    <div class="ico">🛡️</div>
+    <div>
+      <h3>Garantie 14 jours satisfait ou remboursé</h3>
+      <p>Si la formation livrée ne correspond pas à votre brief, nous la corrigeons gratuitement. Si elle ne vous convient toujours pas, vous êtes remboursé intégralement. Sans discussion.</p>
+    </div>
+  </div>
+
+  <div class="faq">
+    <h2>Questions fréquentes</h2>
+    <details><summary>Comment est fixé le prix de 49 à 97 € ?</summary><p>Selon la profondeur demandée : nombre de modules, durée, niveau. Le prix exact vous est confirmé avant tout paiement, avec un devis clair.</p></details>
+    <details><summary>Le contenu est-il vraiment rédigé ?</summary><p>Oui : modules complets, leçons détaillées, exemples concrets, exercices avec corrigés. Vous recevez un document fini, prêt à être vendu ou diffusé.</p></details>
+    <details><summary>À qui appartient le contenu ?</summary><p>À vous, à 100 %. Vous pouvez le vendre, le donner ou l'utiliser en interne. Aucune exclusivité.</p></details>
+    <details><summary>Comment payer ?</summary><p>Par virement bancaire ou message direct après confirmation de la commande. Le paiement en ligne par carte arrive très bientôt.</p></details>
+    <details><summary>Puis-je avoir plusieurs formations ?</summary><p>Oui : le Pack Studio (5 formations, 197 €) est l'offre la plus rentable si vous lancez plusieurs sujets.</p></details>
+  </div>
+
+  <div class="footer">
+    <div>© 2026 AI Course Builder — par El mouskito Studio</div>
+    <div><a href="index.html">Accueil</a> · <a href="builder.html">Outil gratuit</a></div>
+  </div>
+</div>
+
+<script src="chatbot-config.js"></script>
+<script>
+(function () {
+  /* Présélection de l'offre via ancre (#offre-redigee / #offre-studio) */
+  if (location.hash === '#offre-studio') document.getElementById('o-option').value = 'Pack Studio — 5 formations (197 €)';
+
+  document.getElementById('o-submit').addEventListener('click', function () {
+    var nom = document.getElementById('o-nom').value.trim();
+    var email = document.getElementById('o-email').value.trim();
+    var sujet = document.getElementById('o-sujet').value.trim();
+    var cible = document.getElementById('o-cible').value.trim();
+    var opt = document.getElementById('o-option').value;
+    var fmt = document.getElementById('o-format').value;
+    var msg = document.getElementById('o-msg').value.trim();
+
+    if (!nom || !email || email.indexOf('@') === -1) { alert('Merci de renseigner votre nom et un email valide.'); return; }
+    if (!sujet || !cible) { alert('Merci d\u2019indiquer le sujet et le public cible.'); return; }
+
+    var ej = window.CHATBOT_CONFIG && window.CHATBOT_CONFIG.emailjs;
+    if (!ej) { alert('Configuration email indisponible.'); return; }
+    var question = 'COMMANDE FORMATION RÉDIGÉE — option: ' + opt +
+      ' | sujet: ' + sujet + ' | cible: ' + cible + ' | format: ' + fmt +
+      (msg ? ' | précisions: ' + msg : '');
+    var n = 0;
+    var attempt = function () {
+      if (window.emailjs) {
+        emailjs.send(ej.serviceId, ej.templateId, {
+          name: nom, email: email, question: question, site: 'AI Course Builder'
+        }).then(function () {
+          document.getElementById('o-success').classList.add('visible');
+          document.getElementById('o-submit').disabled = true;
+        }).catch(function () {
+          alert('Échec de l\u2019envoi. Merci de réessayer ou d\u2019écrire directement à notre équipe.');
+        });
+      } else if (n < 15) { n++; setTimeout(attempt, 300); }
+      else { alert('Service d\u2019envoi indisponible pour le moment. Merci de réessayer.'); }
+    };
+    attempt();
+  });
+})();
+</script>
+<script src="chatbot.js"></script>
+<script src="assets/js/voice-config.js"></script>
+<script src="assets/js/voice-widget.js"></script>
+</body>
+</html>
