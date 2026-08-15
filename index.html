@@ -11,6 +11,22 @@
 <meta property="og:locale" content="fr_FR">
 <meta name="twitter:card" content="summary">
 <meta name="description" content="Générateur de plans de formation gratuit et illimité + rédaction sur mesure par IA (49-97 €). Créez, structurez et vendez vos formations en 10 minutes.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "AI Course Builder — Formation rédigée sur mesure par IA",
+  "description": "Générateur de plans de formation gratuit et illimité + rédaction complète par IA : modules, leçons, exemples concrets, exercices corrigés, page de vente et email de lancement. Livrée sous 48-72 h, garantie 14 jours.",
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "EUR",
+    "lowPrice": "49",
+    "highPrice": "197",
+    "offerCount": "3",
+    "availability": "https://schema.org/InStock"
+  }
+}
+</script>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:'Segoe UI', system-ui, sans-serif; background:#070b14; color:#e8ecf5; overflow-x:hidden; }
@@ -130,6 +146,17 @@
   .footer a { color:#a78bfa; text-decoration:none; }
   .footer a:hover { text-decoration:underline; }
 </style>
+  /* Animations au scroll (progressif, non intrusif, respecte prefers-reduced-motion) */
+  .js .reveal { opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s ease; will-change:opacity, transform; }
+  .js .reveal.visible { opacity:1; transform:none; }
+  .js .reveal.d1 { transition-delay:.12s; }
+  .js .reveal.d2 { transition-delay:.24s; }
+  .js .reveal.d3 { transition-delay:.36s; }
+  @media (prefers-reduced-motion: reduce) {
+    .js .reveal { opacity:1 !important; transform:none !important; transition:none !important; }
+  }
+
+<script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 <nav class="nav">
@@ -150,15 +177,15 @@
   <div class="hero-inner">
     <div class="layer" data-depth="0.45">
       <div style="text-align:center">
-        <div class="badge">Outil gratuit · rédaction par IA sur demande</div>
-        <div class="title" id="titre">Créez vos formations<br>en <em>10 minutes</em></div>
+        <div class="badge reveal">Outil gratuit · rédaction par IA sur demande</div>
+        <div class="title reveal d1" id="titre">Créez vos formations<br>en <em>10 minutes</em></div>
       </div>
     </div>
     <div class="layer" data-depth="0.55">
-      <div class="subtitle">Sujet + public cible → plan de formation complet (modules, leçons, exercices, checklist)<br>+ template de page de vente. Gratuit, instantané, sans compétence technique.</div>
+      <div class="subtitle reveal d2">Sujet + public cible → plan de formation complet (modules, leçons, exercices, checklist)<br>+ template de page de vente. Gratuit, instantané, sans compétence technique.</div>
     </div>
     <div class="layer" data-depth="0.7">
-      <div class="cta">
+      <div class="cta reveal d3">
         <a class="btn btn-primary" href="builder.html">🎯 Essayer l'outil gratuit →</a>
         <a class="btn btn-ghost" href="#offres">Voir les offres</a>
       </div>
@@ -168,12 +195,12 @@
 </section>
 
 <section class="block" id="outil">
-  <div class="sec-head">
+  <div class="sec-head reveal">
     <div class="kicker">L'outil</div>
     <h2>Un vrai moteur de structuration pédagogique</h2>
     <p>Entrez un sujet et un public : le générateur produit un plan professionnel, différent et cohérent selon votre cas — 10 banques thématiques, 4 formats, 3 niveaux, détection de l'audience. Zéro API, zéro coût, zéro attente.</p>
   </div>
-  <div class="tool-card">
+  <div class="tool-card reveal d1">
     <h2>🧠 Essayez-le maintenant</h2>
     <p class="note">Votre plan est généré instantanément dans le navigateur. Rien n'est envoyé, rien n'est facturé.</p>
     <label for="sujet">Sujet de votre formation</label>
@@ -201,11 +228,11 @@
 </section>
 
 <section class="block">
-  <div class="sec-head">
+  <div class="sec-head reveal">
     <div class="kicker">Comment ça marche</div>
     <h2>De l'idée à la formation vendable en 4 étapes</h2>
   </div>
-  <div class="grid">
+  <div class="grid reveal d1">
     <div class="mod"><div class="num">01</div><h3>Vous entrez votre sujet</h3><p>Un thème, une cible, une durée. Même une idée floue suffit : le moteur structure pour vous.</p></div>
     <div class="mod"><div class="num">02</div><h3>Le plan est généré</h3><p>Modules, leçons, exemples, exercices, checklist de livraison — un squelette pédagogique complet en une seconde.</p></div>
     <div class="mod"><div class="num">03</div><h3>Vous commandez la rédaction</h3><p>Un rédacteur expert transforme votre plan en formation complète, niveau expert, livrée en PDF sous 48-72 h.</p></div>
@@ -214,12 +241,12 @@
 </section>
 
 <section class="block" id="offres">
-  <div class="sec-head">
+  <div class="sec-head reveal">
     <div class="kicker">Les offres</div>
     <h2>Choisissez votre formule</h2>
     <p>L'outil est gratuit et illimité. La rédaction sur mesure est facturée à la formation. Garantie « satisfait ou remboursé » 14 jours.</p>
   </div>
-  <div class="offers">
+  <div class="offers reveal d1">
     <div class="offer">
       <h3>🆓 Outil gratuit</h3>
       <div class="tagline">Pour structurer vos idées, sans limite.</div>
@@ -264,7 +291,7 @@
 </section>
 
 <section class="block" id="commander">
-  <div class="order-card" id="carte">
+  <div class="order-card reveal" id="carte">
     <h2>📦 Commander une formation rédigée</h2>
     <p class="note">Après votre commande, vous recevez une confirmation par email avec le lien de paiement sécurisé. Vos fichiers vous sont livrés dès réception du paiement.</p>
     <label for="f-nom">Votre nom</label>
@@ -291,11 +318,11 @@
 </section>
 
 <section class="block" id="faq">
-  <div class="sec-head">
+  <div class="sec-head reveal">
     <div class="kicker">FAQ</div>
     <h2>Questions fréquentes</h2>
   </div>
-  <div class="faq">
+  <div class="faq reveal d1">
     <details><summary>C'est vraiment gratuit ?</summary><p>Oui. Le générateur de plans est 100 % gratuit et illimité : vous structurez autant de formations que vous voulez, sans inscription. Vous ne payez que si vous commandez la rédaction complète.</p></details>
     <details><summary>Comment se passe la rédaction ?</summary><p>Vous commandez avec votre plan : un rédacteur expert (assisté par IA) transforme le squelette en formation complète — leçons détaillées, exemples concrets, exercices, checklist — livrée en PDF sous 48-72 h ouvrées.</p></details>
     <details><summary>Je ne suis pas technophile, c'est pour moi ?</summary><p>Oui. Si vous savez remplir un formulaire, vous savez créer une formation. Tout se passe dans le navigateur, sans aucun outil à installer.</p></details>
@@ -492,5 +519,22 @@ function commander(){
 <script src="chatbot.js"></script>
 <script src="assets/js/voice-config.js"></script>
 <script src="assets/js/voice-widget.js"></script>
+<script>
+/* Animations au scroll — IntersectionObserver (non intrusif, respecte prefers-reduced-motion) */
+(function () {
+  var els = document.querySelectorAll('.reveal');
+  if (!els.length) return;
+  if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    for (var i = 0; i < els.length; i++) els[i].classList.add('visible');
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting) { en.target.classList.add('visible'); io.unobserve(en.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+  for (var j = 0; j < els.length; j++) io.observe(els[j]);
+})();
+</script>
 </body>
 </html>

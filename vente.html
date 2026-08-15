@@ -5,6 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Commander — AI Course Builder | Formation rédigée par IA</title>
 <meta name="description" content="Commandez votre formation rédigée par IA : plan complet, leçons, exercices corrigés, page de vente. Livrée sous 48-72 h. Garantie 14 jours.">
+<meta property="og:title" content="Commander — AI Course Builder | Formation rédigée par IA">
+<meta property="og:description" content="Commandez votre formation rédigée par IA : plan complet, leçons, exercices corrigés, page de vente. Livrée sous 48-72 h. Garantie 14 jours. À partir de 49 €.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "AI Course Builder — Formation rédigée sur mesure",
+  "description": "Formation complète rédigée par IA à partir de 49 € : plan, leçons, exemples, exercices corrigés, page de vente et email de lancement. Livrée sous 48-72 h, garantie 14 jours.",
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "EUR",
+    "lowPrice": "49",
+    "highPrice": "197",
+    "offerCount": "2",
+    "availability": "https://schema.org/InStock"
+  }
+}
+</script>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:'Segoe UI', system-ui, sans-serif; background:#0a0812; color:#eceaf5; line-height:1.6; }
@@ -67,6 +88,17 @@
   .footer { border-top:1px solid rgba(255,255,255,.08); margin-top:3rem; padding-top:1.5rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:.8rem; color:#6f648f; font-size:.85rem; }
   .footer a { color:#a78bfa; text-decoration:none; }
 </style>
+  /* Animations au scroll (progressif, non intrusif, respecte prefers-reduced-motion) */
+  .js .reveal { opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s ease; will-change:opacity, transform; }
+  .js .reveal.visible { opacity:1; transform:none; }
+  .js .reveal.d1 { transition-delay:.12s; }
+  .js .reveal.d2 { transition-delay:.24s; }
+  .js .reveal.d3 { transition-delay:.36s; }
+  @media (prefers-reduced-motion: reduce) {
+    .js .reveal { opacity:1 !important; transform:none !important; transition:none !important; }
+  }
+
+<script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 <div class="wrap">
@@ -78,7 +110,7 @@
   <h1>Votre formation, rédigée par IA, livrée sous 48-72 h</h1>
   <p class="intro">Vous avez un sujet, une cible… et pas le temps d'écrire. Nous rédigeons pour vous une formation complète et professionnelle : modules, leçons, exemples concrets, exercices corrigés, plus votre page de vente et votre email de lancement. Vous êtes propriétaire du contenu, vous le vendez comme vous voulez.</p>
 
-  <div class="pricing">
+  <div class="pricing reveal">
     <div class="plan">
       <h2>Outil gratuit</h2>
       <div class="price">0 €<small> / illimité</small></div>
@@ -119,14 +151,14 @@
   </div>
 
   <h2 style="color:#e9d5ff;font-size:1.2rem;margin-bottom:1rem;">Comment ça se passe</h2>
-  <div class="steps">
+  <div class="steps reveal d1">
     <div class="step"><h3>Générez votre plan</h3><p>Gratuit, en 2 minutes, sur la page outil.</p></div>
     <div class="step"><h3>Commandez</h3><p>Remplissez le formulaire ci-dessous avec votre plan.</p></div>
     <div class="step"><h3>Recevez votre formation</h3><p>Livrée par email sous 48-72 h, prête à vendre.</p></div>
     <div class="step"><h3>Vendez</h3><p>Page de vente + email de lancement inclus.</p></div>
   </div>
 
-  <div class="order" id="commander">
+  <div class="order reveal" id="commander">
     <h2>🛒 Commander ma formation rédigée</h2>
     <p class="sub">Nous vous confirmons le tarif exact (49-97 € selon la profondeur) et les modalités de paiement sous 24 h ouvrées. Paiement par virement ou message direct — Stripe arrive bientôt.</p>
     <div class="grid2">
@@ -155,7 +187,7 @@
     <div class="success" id="o-success"><strong>✅ Commande envoyée !</strong> Vous recevez une confirmation par email dans quelques minutes, puis notre réponse sous 24 h avec le tarif exact et les modalités de paiement.</div>
   </div>
 
-  <div class="guarantee">
+  <div class="guarantee reveal d1">
     <div class="ico">🛡️</div>
     <div>
       <h3>Garantie 14 jours satisfait ou remboursé</h3>
@@ -163,7 +195,7 @@
     </div>
   </div>
 
-  <div class="faq">
+  <div class="faq reveal d2">
     <h2>Questions fréquentes</h2>
     <details><summary>Comment est fixé le prix de 49 à 97 € ?</summary><p>Selon la profondeur demandée : nombre de modules, durée, niveau. Le prix exact vous est confirmé avant tout paiement, avec un devis clair.</p></details>
     <details><summary>Le contenu est-il vraiment rédigé ?</summary><p>Oui : modules complets, leçons détaillées, exemples concrets, exercices avec corrigés. Vous recevez un document fini, prêt à être vendu ou diffusé.</p></details>
@@ -222,5 +254,22 @@
 <script src="chatbot.js"></script>
 <script src="assets/js/voice-config.js"></script>
 <script src="assets/js/voice-widget.js"></script>
+<script>
+/* Animations au scroll — IntersectionObserver (non intrusif, respecte prefers-reduced-motion) */
+(function () {
+  var els = document.querySelectorAll('.reveal');
+  if (!els.length) return;
+  if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    for (var i = 0; i < els.length; i++) els[i].classList.add('visible');
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting) { en.target.classList.add('visible'); io.unobserve(en.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+  for (var j = 0; j < els.length; j++) io.observe(els[j]);
+})();
+</script>
 </body>
 </html>
